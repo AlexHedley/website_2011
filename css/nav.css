@@ -1,0 +1,147 @@
+/* ----- */
+/*  Nav  */
+/* ----- */
+
+nav li {
+	float: left;
+	width: 8em;
+}
+
+nav, nav ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	overflow: hidden;
+	zoom: 1; /* for IE 6 */
+}
+
+nav 
+{
+    margin: 0 auto;
+    }
+
+nav a {
+	color: #000;
+	font-size: 11px;
+	text-transform: uppercase;
+	text-decoration: none;
+	border-left: none;
+	padding: .5em;
+	display: block;
+	background-color: #E7E7E7;
+	text-align: center;
+	zoom: 1; /* for IE 6 */
+	
+	-webkit-border-radius:1em;
+	-moz-border-radius:1em;
+	border-radius:1em;
+}
+
+nav li ul {
+	position: absolute;
+	width: 8em; 
+	left: -999em; /* instead of display:none*/
+}
+
+nav a:hover {
+	font-weight: bold;
+	background-color: #9CF;
+	border: 1px solid black;
+}
+
+nav li:hover ul {
+	left: auto;
+}
+
+/*
+nav ul.stuff a {
+	background-color: blue;
+}
+
+nav ul.stuff a:hover {
+	background-color: red;
+}
+
+nav ul.other a {
+	background-color: green;
+}
+
+nav ul.other a:hover {
+	background-color: orange;
+}
+
+nav ul.projects a {
+	background-color: purple;
+}
+
+nav ul.projects a:hover {
+	background-color: yellow;
+}
+*/
+
+nav ul li {
+	text-align: center;
+	text-transform: uppercase;
+	
+	-webkit-border-radius:1em;
+	-moz-border-radius:1em;
+	border-radius:1em;
+
+	background-color: #999;
+
+}
+
+/* - Nav - 
+
+old
+
+nav {
+	/*border: 1px green solid;
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	padding: 1em;
+	
+	background-color: #99FF99;
+	
+	-webkit-border-radius:1em;
+	-moz-border-radius:1em;
+	border-radius:1em;
+	
+	-webkit-box-shadow: .5em .5em .5em #99FF33;
+	-moz-box-shadow: .5em .5em .5em #99FF33;
+	box-shadow: .5em .5em .5em #99FF33;
+}
+
+nav li {
+	list-style: none;
+	float: left;
+}
+
+nav a {
+	display: block;
+}
+*/
+
+/*
+     FILE ARCHIVED ON 10:12:49 Jan 28, 2011 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 10:25:29 Nov 03, 2019.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 120.849
+  exclusion.robots: 0.149
+  LoadShardBlock: 94.978 (3)
+  CDXLines.iter: 11.306 (3)
+  PetaboxLoader3.datanode: 110.9 (4)
+  exclusion.robots.policy: 0.139
+  RedisCDXSource: 12.125
+  load_resource: 73.29
+  esindex: 0.014
+  PetaboxLoader3.resolve: 44.051
+*/

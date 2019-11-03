@@ -1,0 +1,33 @@
+html, body, h1, h2, h3, h4, h5, h6, p, ol, ul, li, pre, code, address, variable, form, fieldset, blockquote {
+ padding: 0;
+ margin: 0;
+ font-size: 100%;
+ font-weight: normal;
+}
+table { border-collapse: collapse; border-spacing: 0; }
+td, th, caption { font-weight: normal; text-align: left; }
+img, fieldset { border: 0; }
+ol { padding-left: 1em; list-style: decimal; }
+ul { padding-left: 1em; padding-bottom:1em; list-style:square; }
+q:before, q:after { content:''; }
+/*
+     FILE ARCHIVED ON 10:11:02 Jan 28, 2011 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 10:25:28 Nov 03, 2019.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 82.687
+  exclusion.robots: 0.317
+  esindex: 0.023
+  PetaboxLoader3.resolve: 59.095
+  PetaboxLoader3.datanode: 81.519 (4)
+  exclusion.robots.policy: 0.296
+  load_resource: 134.388
+  CDXLines.iter: 18.536 (3)
+  LoadShardBlock: 50.977 (3)
+  RedisCDXSource: 8.186
+*/
