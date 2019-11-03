@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Testing | Shadows</title>
+<!-- #include virtual="/head.html"-->
+    <style>
+    div>h1 {
+		padding: 2px;
+		font-size: "Lucinda Sans Unicode", "Lucida Grande", sans-serif;
+		background-color: #555;
+		font-size:1.5em;
+	}
+		
+	div:nth-of-type(1)>h1 {
+		text-shadow: 0 1px 0 #999;
+	}
+		
+	div:nth-of-type(2)>h1 {
+		text-shadow: 1px 1px 9px yellow;
+		color: #fff;
+	}
+		
+	div:nth-of-type(3)>h1 {
+		color: #999;
+		text-shadow: 0px 1px 0 #222, 0 -1px 0 #ccc;
+		-webkit-text-stroke: .1px rgba(0,0,0,.2);
+	}
+		
+	div:nth-of-type(4)>h1 {
+		color: rgba(255,0,0,0);
+		text-shadow: 1px 1px 2px red, -3px 1px 3px red;
+	}
+	
+	div:nth-of-type(5)>h1 {
+	    color: Blue;
+        font-weight: bold;
+        text-shadow: 0 0 4px white, 0 -5px 4px #ff3, 2px -10px 6px #fd3, -2px -15px 11px #f80, 2px -25px 18px #f20;
+	}
+    </style>	
+</head>
+
+<body>
+
+<!-- #include virtual="/header.html"-->
+
+<h1>Shadows</h1>
+<div>
+<h1>Embossed Shadow Effect?</h1>
+</div>
+
+<div>
+<h1>Glowing Shadow Effect?</h1>
+</div>
+
+<div>
+<h1>Engraved Shadow Effect?</h1>
+</div>
+
+
+<div>
+<h1>Multi Shadow Effect</h1>
+</div>
+
+<div>
+<h1>Fire Effect?</h1>
+</div>
+
+</div>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,110 @@
+﻿/* Rolling die */
+#timings_demo {
+	width:500px;
+	height:340px;
+	margin:0 auto;
+	border:1px #aaa solid;
+	padding:10px;		
+}
+
+.test_box {
+	width:50px;
+	height:50px;
+	margin-bottom:10px;
+	background-color:#ccc;
+}
+
+#ease.test_box {
+	-webkit-transition: all 4s ease;
+	-moz-transition: all 4s ease;
+	-o-transition: all 4s ease;
+	-webkit-transition: all 4s ease;
+	transition: all 4s ease;
+	border:1px #f00 solid;
+}
+
+#ease-in.test_box {
+	-webkit-transition: all 4s ease-in;
+	-moz-transition: all 4s ease-in;
+	-o-transition: all 4s ease-in;
+	-webkit-transition: all 4s ease-in;
+	transition: all 4s ease-in;
+	border:1px #0f0 solid;
+}
+
+#ease-out.test_box {
+	-webkit-transition: all 4s ease-out;
+	-moz-transition: all 4s ease-out;
+	-o-transition: all 4s ease-out;
+	-webkit-transition: all 4s ease-out;
+	transition: all 4s ease-out;
+	border:1px #00f solid;
+}
+
+#ease-in-out.test_box {
+	-webkit-transition: all 4s ease-in-out;
+	-moz-transition: all 4s ease-in-out;
+	-o-transition: all 4s ease-in-out;
+	-webkit-transition: all 4s ease-in-out;
+	transition: all 4s ease-in-out;
+	border:1px #ff0 solid;
+}
+
+#linear.test_box {
+	-webkit-transition: all 4s linear;
+	-moz-transition: all 4s linear;
+	-o-transition: all 4s linear;
+	-webkit-transition: all 4s linear;
+	transition: all 4s linear;
+	border:1px #f0f solid;
+}
+
+#timings_demo:hover .test_box, #timings_demo.hover_effect .test_box {
+	margin-left:440px;
+	-webkit-border-radius:25px;
+	-moz-border-radius:25px;
+	-o-border-radius:25px;		
+	-webkit-transform: rotate(360deg);
+	-moz-transform: rotate(360deg);
+	transform: rotate(360deg);				
+	background-color:#fff;
+}
+
+/* Link backgrounds */
+#links .oneten {
+	background-color:rgba(255,255,0,0.3);
+}
+
+#links .dotcouk {
+	background-color:rgba(0,0,255,0.3);
+}
+
+#links .bbrl{
+	background-color:rgba(0,255,0,0.3);
+}
+
+#links .redwings{
+	background-color:rgba(255,0,0,0.1);
+}
+
+#links span {
+	-webkit-transition:all 0.5s ease-in-out;
+	-moz-transition:all 0.5s ease-in-out;
+	-o-transition:all 0.5s ease-in-out;
+	-transition:all 0.5s ease-in-out;
+	font-family:"Marker Felt", "Comic Sans", Arial, sans-serif;
+	background-color:rgba(255,255,0,0.2);
+	-webkit-border-radius:15px;
+	-moz-border-radius:15px;
+	border-radius:15px;
+	padding:1em;
+	-webkit-box-shadow: 5px 5px 5px #aaa;
+	-moz-box-shadow: 5px 5px 5px #aaa;
+	box-shadow: 5px 5px 5px #aaa;
+}
+
+#links span:hover {
+	-webkit-box-shadow: 10px 10px 5px #aaa;
+	-moz-box-shadow: 10px 10px 5px #aaa;
+	box-shadow: 10px 10px 5px #aaa;
+}

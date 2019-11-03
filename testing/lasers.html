@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang='en'>
+
+<head>
+	<style>
+	.item {
+	    position: relative;
+	    width: 475px;
+	    height: 400px;
+	    margin: 50px auto;
+	}
+ 
+	.background {
+	    position: absolute;
+	    z-index: 1;
+	    width: 475px;
+	    height: 400px;
+	    display: block;
+	}
+ 
+	.hover {
+	    height:0%;
+	    /* background: url(hover.png) no-repeat; */
+	    position: absolute;
+	    z-index: 2;
+	    -webkit-transition: height 1s ease;
+	    width: 100%;
+	    -webkit-background-size: 475px 400px;
+	}
+ 
+	.item:hover .hover {
+	    height: 100%;
+	}
+ 
+	.laser {
+	    height: 3px;
+	    width: 100%;
+	    background: red;
+	    display: block;
+	    position: absolute;
+	    bottom: -2px;
+	    -webkit-border-radius: 50%;
+	    box-shadow: 0 0 20px 10px red;
+	    -webkit-transition: opacity .25s ease;
+	    opacity: 0;
+	    -webkit-transition-delay: .75s;
+	}
+ 
+	.item:hover .laser {
+	    opacity: 1;
+	    -webkit-transition-delay: 0s;
+	}
+	</style>
+</head>
+
+<body>
+	
+	<div class="item">
+	    <div class="hover">
+	        <div class="laser"></div>
+	    </div>
+	    <img class="background" src="background.png"/>
+	</div>
+	
+	<p>From http://www.ryancollins.me/?p=539</p>
+	
+</body>
+</html>
