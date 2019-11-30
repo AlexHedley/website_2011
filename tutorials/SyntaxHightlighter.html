@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Alex Hedley | Tutorials | Syntax Highlighter</title>
+    
+    <link rel="stylesheet" href="../css/reset.css" >
+	<link rel="stylesheet" href="../css/default.css" >
+	<link rel="stylesheet" href="../css/nav.css" >
+
+	<script type="text/javascript" src="../scripts/jquery.min.js"></script>
+
+    <script src="../scripts/highlight/shCore.js"></script>
+    <script src="../scripts/highlight/shAutoloader.js"></script>
+    <script src="../scripts/highlight/shBrushXml.js"></script>
+    <script src="../scripts/highlight/shBrushJScript.js"></script>
+    
+    <link rel="stylesheet" href="../css/synhigh.css">
+    <link rel="stylesheet" href="../css/highlight/shCore.css">
+    <link rel="stylesheet" id="active-theme" href="../css/highlight/shThemeMidnight.css">
+    
+    <script src="../scripts/theme-switcher.js"></script>
+    <script src="../scripts/jquery.cookie.js"></script>
+    
+    <script>
+        SyntaxHighlighter.all();
+    </script>
+</head>
+
+<body>
+
+    <div id="main">
+
+        <div class="content">
+            <!-- The Theme Drawer -->
+            <div id="theme-wrapper">
+                <div id="theme-drawer">
+                    <h3>Syntax Highlighter Theme</h3>
+                    <ul>
+                        <li><a href="#" rel="Default">Default</a></li>
+                        <li><a href="#" rel="Django">Django</a></li>
+                        <li><a href="#" rel="Eclipse">Eclipse</a></li>
+                        <li><a href="#" rel="Emacs">Emacs</a></li>
+                        <li><a href="#" rel="FadeToGrey">FadeToGrey</a></li>
+                        <li><a href="#" rel="Midnight">Midnight</a></li>
+                        <li><a href="#" rel="RDark">RDark</a></li>
+                    </ul>
+                </div><!-- end #theme-drawer -->
+            </div><!-- end #theme-wrapper -->
+
+            <br />
+
+            <h1>Syntax Highlighter</h1>
+            <p>So I had seen some syntax highlighting done on other sites and wondered how it had been achieved.</p> 
+            <p>I came across <a href="http://alexgorbatchev.com/SyntaxHighlighter/">SyntaxHighlighter</a> by Alex Gorbatchev.</p>
+            <p>Firstly you will either have to 
+                <a href="http://alexgorbatchev.com/SyntaxHighlighter/download/">download</a> the source code or 
+                <a href="http://alexgorbatchev.com/SyntaxHighlighter/hosting.html">link</a> to it.</p>
+
+            <pre class="brush: xhtml;" title="Add the code to your page">
+                &lt;script src="scripts/shCore.js"&gt;&lt;/script&gt;
+                &lt;link rel="stylesheet" href="css/shCore.css"&gt;
+            </pre>
+
+            <pre class="brush: xhtml;" title="Add the default theme">
+                &lt;link rel="stylesheet" href="css/shCoreDefault.css"&gt;
+            </pre>
+
+            <pre class="brush: xhtml;" title="Add the brushes">
+                &lt;script src="scripts/shBrushXml.js"&gt;&lt;/script&gt;
+                &lt;script src="scripts/shBrushJScript.js"&gt;&lt;/script&gt;
+            </pre>
+
+            <pre class="brush: xhtml;" title="Tell the scripts what to do...">
+            &lt;script&gt;
+                    SyntaxHighlighter.all();
+            &lt;/script&gt;
+            </pre>
+
+            <p>Now wrap any code in the <code>&lt;pre&gt;&lt;/pre&gt;</code> tags.</p>
+            <p>You then need to choose what language the code is so it will be styled 
+                accordingly.<br />
+                Add <code>class=&quot;brush: <strong>BRUSH ALIAS</strong>;&quot;</code> to the pre tag.
+                </p>
+            <pre class='brush: js'>
+&lt;pre class="brush: js"&gt;
+    /**
+    * SyntaxHighlighter
+    */
+    function foo()
+    {
+        if (counter &lt;= 10)
+            return;
+        // it works!
+    }
+&lt;/pre&gt;
+            </pre>
+            <p>Finally you need to convert any html to the respective 
+                <a href="http://www.w3.org/MarkUp/html3/latin1.html">Entities</a>.</p>
+            <p>Greater than: &gt; is <code>&quot;&amp;gt;&quot;</code></p>
+            <p>Less than: &lt; is <code>&quot;&amp;lt;&quot;</code></p>
+            <p>Check out the
+                <a href="http://alexgorbatchev.com/SyntaxHighlighter/manual/brushes/">list</a> 
+                of brushes and the aliases for the class name you need when using it on a 
+                pre tag.</p>
+
+            <pre class="brush: xhtml;" title="Don't forget to Add the Brush to the head">
+                &lt;script src="scripts/shBrush<strong>NAME</strong>.js"&gt;&lt;/script&gt;
+            </pre>
+            <p>There is an 
+                <a href="http://alexgorbatchev.com/SyntaxHighlighter/manual/api/autoloader.html">autoloader</a> function but I haven't been able to get this to work.</p>
+            <hr />
+            <p>You can also use the <code>&lt;script&gt;</code>tag</p>
+            <pre class='brush: xml'>
+&lt;script type="syntaxhighlighter" class="brush: js"&gt;&lt;![CDATA[
+    /**
+    * SyntaxHighlighter
+    */
+    function foo()
+    {
+        if (counter &lt;= 10)
+            return;
+        // it works!
+    }
+]]>&lt;/script&gt;
+            </pre>
+            <p>Note: This takes the extra <code>type="syntaxhighlighter"</code> and the necessary <code>&lt;![CDATA[...]]&gt;</code></p>
+        </div><!-- Content End -->
+
+    </div><!-- Main End -->
+
+    <footer>
+        <div class="social">
+            <!-- http://sixrevisions.com/freebies/icons/social-sketches-exclusive-free-hand-sketched-icon-set/ -->
+            <ul>
+                <li><a href="http://twitter.com/alexhedley" target="_blank">
+                    <img src="../images/twitter-32.png"/></a>
+                </li>
+                <li><a href="hhttp://en-gb.facebook.com/Alex.Hedley" target="_blank">
+                    <img src="../images/facebook-32.png"/></a>
+                </li>
+            </ul>
+        </div>
+
+        <!--<a href="http://feed1.w3.org/check.cgi?url=http%3A//www.alexhedley.com/rss/">
+            <img src="valid-rss-rogers.png" alt="[Valid RSS]" title="Validate my RSS feed" />
+        </a>-->
+
+        </footer><!-- Footer End -->
+
+</body>
+
+</html>

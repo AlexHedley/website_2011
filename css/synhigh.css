@@ -1,0 +1,12 @@
+﻿#theme-wrapper {
+	float: right;
+	text-align: right;
+	padding: 2px;
+}
+	
+#theme-drawer li {
+	list-style: none;
+	display: inline;
+	font-size: .7em;
+	margin: 2px;
+}

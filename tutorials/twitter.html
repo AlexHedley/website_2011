@@ -1,0 +1,306 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Alex Hedley | Tutorials | Twitter</title>
+
+	<link rel="stylesheet" href="../css/reset.css" >
+	<link rel="stylesheet" href="../css/default.css" >
+	<link rel="stylesheet" href="../css/nav.css" >
+
+	<script type="text/javascript" src="../scripts/jquery.min.js"></script>
+	
+    <script src="../scripts/highlight/shCore.js"></script>
+    <script src="../scripts/highlight/shAutoloader.js"></script>
+    <script src="../scripts/highlight/shBrushXml.js"></script>
+    <script src="../scripts/highlight/shBrushJScript.js"></script>
+   
+    <link rel="stylesheet" href="../css/synhigh.css">
+    <link rel="stylesheet" href="../css/highlight/shCore.css">
+    <link rel="stylesheet" id="active-theme" href="../css/highlight/shThemeMidnight.css">
+    
+    <script src="../scripts/theme-switcher.js"></script>
+    <script src="../scripts/jquery.cookie.js"></script>
+    
+    <script src="../scripts/twitterfeed.js"></script>
+
+    <script type="text/javascript">
+        SyntaxHighlighter.all();
+    </script>
+
+    <style>
+    #twitter {
+        width: 200px;
+        font-size: .6em;
+        padding: 10px;
+        background-color: Green;   
+    }
+    .tweet {
+        padding: 10px;
+        margin: 5px 0;
+        background: rgba(100,149,237,.5);
+    }
+    
+    .tweet a { color: Red; }
+    
+    /* ----------- */
+	/* Chat Bubble */
+	/* ----------- */
+	.chat-bubble {
+		background-color:#EDEDED;
+		border:2px solid #666666;
+		/*font-size:35px;
+		line-height:1.3em;*/
+		margin:10px auto;
+		padding:10px;
+		position:relative;
+		/*text-align:center;
+		width:100px;*/
+		-moz-border-radius:10px;
+		-webkit-border-radius:10px;
+		-moz-box-shadow:0 0 5px #888888;
+		-webkit-box-shadow:0 0 5px #888888;
+	}
+
+	.chat-bubble-arrow-border {
+		border-color: #666666 transparent transparent transparent;
+		border-style: solid;
+		border-width: 10px;
+		height:0;
+		width:0;
+		position:absolute;
+		bottom:-22px;
+		left:30px;
+	}
+
+	.chat-bubble-arrow {
+		border-color: #EDEDED transparent transparent transparent;
+		border-style: solid;
+		border-width: 10px;
+		height:0;
+		width:0;
+		position:absolute;
+		bottom:-19px;
+		left:30px;
+	}
+	
+	/* IE6 */
+	.chat-bubble-arrow {
+		_border-left-color: pink;
+		_border-bottom-color: pink;
+		_border-right-color: pink;
+		_filter: chroma(color=pink);
+	}
+    </style>
+</head>
+</head>
+
+<body>
+
+	<div id="main">
+
+		<div class="content">
+			<!-- The Theme Drawer -->
+			<div id="theme-wrapper">
+				<div id="theme-drawer">
+					<h3>Syntax Highlighter Theme</h3>
+					<ul>
+						<li><a href="#" rel="Default">Default</a></li>
+						<li><a href="#" rel="Django">Django</a></li>
+						<li><a href="#" rel="Eclipse">Eclipse</a></li>
+						<li><a href="#" rel="Emacs">Emacs</a></li>
+						<li><a href="#" rel="FadeToGrey">FadeToGrey</a></li>
+						<li><a href="#" rel="Midnight">Midnight</a></li>
+						<li><a href="#" rel="RDark">RDark</a></li>
+					</ul>
+				</div><!-- end #theme-drawer -->
+			</div><!-- end #theme-wrapper -->
+			<br />
+
+			<h1>Integrated Twitter Feed</h1>
+			<p>Here is a tutorial on how to integrate a twitter feed into your website using 
+				<a href="http://jquery.com/" target="_blank">JQuery</a>.</p>
+			<p>This allows more customisation compared to what the Twitter 
+				<a href="http://twitter.com/about/resources/widgets/widget_profile" target="_blank">Profile Widget</a> API offers</p>
+
+			<p>Add the JQuery script to your page locally</p>
+			<pre class="brush: xhtml;" title="Add JQuery">
+				&lt;script src="js/jquery-1.4.min.js"&gt;&lt;/script&gt;
+			</pre>
+
+			<p>Or From Google</p>
+			<pre class="brush: xhtml;">
+				&lt;script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"&gt;&lt;/script&gt;
+			</pre>
+
+			<p>Firstly add the document ready call for the</p>
+			<pre class="brush: js;">
+				$(document).ready(function(){
+				});
+			</pre>
+
+			<p>I've created some variables to hold the username and the number of tweets (this isn't pulling through the correct number, maybe re-tweets/replies aren't shown?)</p>
+			<pre class="brush: js;">
+				var user = alexhedley;
+				var tweets = 10;
+			</pre>
+
+			<p>Now use the JSON call to acquire the tweets</p>
+			<pre class="brush: js;">
+				$.getJSON(&#39;http://twitter.com/status/user_timeline/&#39;+ user 
+					+&#39;.json?count=&#39; 
+					+ tweets + &#39;&amp;callback=?&#39;,
+					function(data){ ↓ }
+				);
+			</pre>
+
+			<p>We then want to get each tweet and use it somehow.</p>
+			<pre class="brush: js;">
+				$.each(data, function(index, item){
+					↓
+				});
+			</pre>
+
+			<p>You will add a div to the page where the tweets will be appended to</p>
+
+			<pre class="brush: xhtml;">
+				&lt;body&gt;
+					&lt;div id=&quot;twitter&quot;&gt;&lt;/div&gt;
+				&lt;/body&gt;
+			</pre>
+
+			<p>Now in the javascipt we want to append the tweet and the relative time at 
+				the end.</p>
+			<pre class="brush: js;">
+			$('#twitter').append(
+				'&lt;div class="tweet">&lt;p&gt;' +
+				item.text.linkify().linkuser() +
+				'&lt;/p&gt;&lt;p&gt;&lt;strong&gt;
+				&lt;time datetime="' + item.created_at + '"&gt;' + relative_time(item.created_at) + '&lt;/time&gt;
+				&lt;/strong&gt;&lt;/p&gt;&lt;/div&gt;'
+			); 		
+			</pre>
+
+			<p>So the tweet text has two functions called to convert the links and @ tags to clickable links instead of text.</p>
+			<p>This can be done by chaining the calls together.</p>
+
+			<pre class="brush: js;">
+			item.text.linkify().linkuser()
+			</pre>
+
+			<p>This uses a regex or Regular Expression to convert any links to actual links.</p>
+			<pre class="brush: js;">
+			String.prototype.linkify = function () {
+					return this.replace(/[A-Za-z]+:\/\/[A-Za-z0-9-_]+\.[A-Za-z0-9-_:%&amp;\?\/.=]+/, 
+						function (m) { 
+							return m.link(m);
+						});
+				};
+			</pre>
+
+			<p>Now convert the @ tags</p>
+			<pre class="brush: js;">
+				String.prototype.linkuser = function () {
+					return this.replace(/[@]+[A-Za-z0-9-_]+/,
+						function (u) {
+							var username = u.replace(&quot;@&quot;, &quot;&quot;)
+							return u.link(&quot;http://twitter.com/&quot; + username);
+						});
+				};
+			</pre>
+
+			<p>Now there is a long function for the relative time of each tweet, it just 
+				converts the time to words from now.</p>
+			<pre class="brush: js;">
+				function relative_time(time_value) {
+					Check source for this ...
+				}
+			</pre>
+
+			<p>ALL</p>
+			<pre class="brush: js;">
+			&lt;script&gt;
+
+			$(document).ready(function () {
+				var user = "alexhedley";
+				var tweets = 10;
+				$.getJSON('http://twitter.com/status/user_timeline/' + user + '.json?count=' + tweets + '&callback=?', function (data) {
+					$.each(data, function (index, item) {
+						$('#twitter').append('&lt;div class="tweet">&lt;p>' + item.text.linkify().linkuser() + 
+						'&lt;/p&gt;&lt;p&gt;&lt;strong&gt;' + &lt;time datetime="' + item.created_at + '"&gt;' 
+						+ relative_time(item.created_at) + '&lt;/time&gt;&lt;/strong&gt;&lt;/p&gt;&lt;/div&gt;');});
+				});
+				function relative_time(time_value) {
+					var values = time_value.split(" ");
+					time_value = values[1] + " " + values[2] + ", " + values[5] + " " + values[3];
+					var parsed_date = Date.parse(time_value);
+					var relative_to = (arguments.length > 1) ? arguments[1] : new Date();
+					var delta = parseInt((relative_to.getTime() - parsed_date) / 1000);
+					delta = delta + (relative_to.getTimezoneOffset() * 60);
+
+					var r = '';
+					if (delta < 60) {
+						r = 'a minute ago';
+					} else if (delta < 120) {
+						r = 'couple of minutes ago';
+					} else if (delta < (45 * 60)) {
+						r = (parseInt(delta / 60)).toString() + ' minutes ago';
+					} else if (delta < (90 * 60)) {
+						r = 'an hour ago';
+					} else if (delta < (24 * 60 * 60)) {
+						r = '' + (parseInt(delta / 3600)).toString() + ' hours ago';
+					} else if (delta < (48 * 60 * 60)) {
+						r = '1 day ago';
+					} else {
+						r = (parseInt(delta / 86400)).toString() + ' days ago';
+					}
+
+					return r;
+				}
+
+				String.prototype.linkify = function () {
+					return this.replace(/[A-Za-z]+:\/\/[A-Za-z0-9-_]+\.[A-Za-z0-9-_:%&\?\/.=]+/, function (m) {
+						return m.link(m);
+					});
+				};
+
+				String.prototype.linkuser = function () {
+					return this.replace(/[@]+[A-Za-z0-9-_]+/, function (u) {
+						var username = u.replace("@", "")
+						return u.link("http://twitter.com/" + username);
+					});
+				};
+			});
+			&lt;/script&gt;
+			</pre>
+
+			<hr />
+			<h2>Example</h2>
+			<p>Here you can style the content however you like...</p>
+			<div id="twitter">
+			<h1>Twitter</h1>
+			</div>
+
+			<h2>Sources</h2>
+			<ul>
+				<li><a href="http://css-tricks.com/examples/BuildYourSocialPage/">http://css-tricks.com/examples/BuildYourSocialPage/</a></li>
+				<li><a href="http://old.nabble.com/search-and-replace,-updating-string.prototype-with-jquery-equivalent-td18325787s27240.html">http://old.nabble.com/search-and-replace,-updating-string.prototype-with-jquery-equivalent-td18325787s27240.html</a></li>
+				<li><a href="http://jonrohan.me/guide/css/creating-triangles-in-css/">http://jonrohan.me/guide/css/creating-triangles-in-css/</a></li>
+			</ul>
+			<h2>Others</h2>
+			<ul>
+				<li><a href="http://blog.ninanet.com/2010/04/14/twitter-feed-with-jquery">
+					http://blog.ninanet.com/2010/04/14/twitter-feed-with-jquery</a>
+				</li>
+			</ul>
+
+			<h2>Plugins</h2>
+			<ul>
+				<li><a href="http://theodin.co.uk/blog/jquery/tweetable-1-6-launched.html">http://theodin.co.uk/blog/jquery/tweetable-1-6-launched.html</a></li>
+			</ul>
+
+		</div><!-- Content End -->
+	</div><!-- Main End -->
+</body>
+
+</html>

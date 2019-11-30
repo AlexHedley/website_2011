@@ -1,0 +1,178 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Alex Hedley | Tutorials | Theme Switcher</title>
+    
+    <link rel="stylesheet" href="../css/reset.css" >
+	<link rel="stylesheet" href="../css/default.css" >
+	<link rel="stylesheet" href="../css/nav.css" >
+
+	<script type="text/javascript" src="../scripts/jquery.min.js"></script>
+
+    <script src="../scripts/highlight/shCore.js"></script>
+    <script src="../scripts/highlight/shAutoloader.js"></script>
+    <script src="../scripts/highlight/shBrushXml.js"></script>
+    <script src="../scripts/highlight/shBrushJScript.js"></script>
+    <script src="../scripts/highlight/shBrushCss.js"></script>
+
+    <link rel="stylesheet" href="../css/synhigh.css">
+    <link rel="stylesheet" href="../css/highlight/shCore.css">
+    <link rel="stylesheet" id="active-theme" href="../css/highlight/shThemeMidnight.css">
+    
+    <script src="../scripts/jquery.cookie.js"></script>
+    <script src="../scripts/theme-switcher.js"></script>
+    
+    <style>
+        .view-source {
+            color: Blue;
+        }
+        .view-source:hover {
+            color: green;
+            text-decoration: underline;
+        }
+    </style>
+
+    <script>
+        SyntaxHighlighter.all();
+    </script>
+</head>
+
+<body>
+
+    <div id="main">
+
+        <div class="content">
+
+            <!-- The Theme Drawer -->
+            <div id="theme-wrapper">
+                <div id="theme-drawer">
+                    <h3>Syntax Highlighter Theme</h3>
+                    <ul>
+                        <li><a href="#" rel="Default">Default</a></li>
+                        <li><a href="#" rel="Django">Django</a></li>
+                        <li><a href="#" rel="Eclipse">Eclipse</a></li>
+                        <li><a href="#" rel="Emacs">Emacs</a></li>
+                        <li><a href="#" rel="FadeToGrey">FadeToGrey</a></li>
+                        <li><a href="#" rel="Midnight">Midnight</a></li>
+                        <li><a href="#" rel="RDark">RDark</a></li>
+                    </ul>
+                </div><!-- end #theme-drawer -->
+            </div><!-- end #theme-wrapper -->
+            <br />
+
+            <h1>Theme Switcher</h1>
+            <p>I thought I'd share my findings on a theme switcher, I've seen a few on some sites and then I found a tutorial in a .NET mag I think. I'll add the edition and references when I look it out.</p> 
+
+            <p>So lets start off with something simple.</p>
+            <p>You have a header with a background colour <strong>black</strong> that you would like to be able to change colour 
+                at just a click.</p>
+            <p>Create a header</p>
+
+            <pre class="brush: xhtml;">
+                <header>
+                    <h1>Main Header</h1>
+                </header>
+            </pre>
+
+            <p>Create a stylesheet</p>
+            <pre class="brush: css;" title="/css/black.css">
+            header h1 {
+                color: black;
+            }
+            </pre>
+
+            <p>Add this stylesheet to your document.</p>
+
+            <pre class="brush: xhtml;">
+            <link rel="stylesheet" id="active-theme" href="/css/black.css">
+            </pre>
+
+            <p>Make sure you give this stylesheet an <code>id="active-theme"</code> as this will be used to change the theme later.</p>
+
+            <p>Now create another stylesheet for another colour you wish to have:</p>
+            <pre class="brush: css;" title="/css/red.css">
+            header h1 {
+                color: red;
+            }
+            </pre>
+
+            <p>Repeat this for all the different colours you want.</p>
+            <p>Now add a set of links for all the different themes you&#39;ve created.</p>
+
+            <pre class="brush: xhtml;" title="Add the Switcher to the page">
+            <!-- The Theme Drawer -->
+            <div id="theme-wrapper">
+                <div id="theme-drawer">
+                    <h3>Themes</h3>
+                    <ul>
+                        <li><a href="#" rel="red">Red</a></li>
+                        <li>...</li>
+                        <li><a href="#" rel="blue">Blue</a></li>
+                    </ul>
+                </div><!-- end #theme-drawer -->
+            </div><!-- end #theme-wrapper -->
+            </pre>
+
+            <p>You need to add a <code>rel="Unique Name"</code> to each link.</p>
+            <p>Make sure this is the name of the css file tho (see why later...)</p>
+            <p>Make them dead links <code>href="#"</code></p>
+            <p>Note: Not the best practice but it does the job here.</p>
+
+            <p>Now you can add the following script to the page.</p>
+            <pre class="brush: xhtml;">
+                <script src="../scripts/jquery.cookie.js"></script>
+            </pre>
+            <p><a class="view-source" onClick='window.open("view-source:http://www.alexhedley.com/scripts/jquery.cookie.js")'>View 'jquery.cookie.js' Source</a></p>
+            <p>This stores your choice in a cookie so the next time you visit the page it will be the last choice you made.</p>
+
+            <p>Now we need to add the functionality to change the colour when you click on a choice.</p>
+
+            <pre class="brush: js;" title="Give the cookie a name and how many days before it expires">
+            var cookie_name = "selected_theme";
+            var cookie_options = { path: '/', expires: 7 };
+            </pre>
+
+            <pre class="brush: js;">
+            /* Get Cookie */
+            var get_cookie = $.cookie(cookie_name);
+            if(get_cookie != null) {
+                // if the cookie has a value, get that value
+                $("#active-theme").attr({ href: "PATH TO STYLESHEETS" 
+                    + get_cookie + ".css" });
+            }
+            </pre>
+            <p> Now we need to change the stylesheet when you choose a different theme.</p>
+            <pre class="brush: js;">
+            /* theme switcher */
+            $("#theme-drawer a").click(function() {
+                // get the rel value and store it in themename
+                var themename = $(this).attr("rel");
+                // update the value of the href, which will point to the css 
+                // file of the theme
+                $("#active-theme").attr({ href: "PATH TO STYLESHEETS" + themename + ".css" }); 
+                // update the value of the cookie
+                $.cookie(cookie_name, themename, cookie_options);
+                return false;
+            });
+            </pre>
+            <p><a class="view-source" onClick='window.open("view-source:http://www.alexhedley.com/scripts/theme-switcher.js")'>View 'theme-switcher.js' Source</a></p>
+            <p>This uses the <code>rel=&quot;NAME&quot;</code> attribute you added to each item before to find the chosen theme.</p>
+                <p>Then it changes the stylesheet the page is using by updating the path of the
+                    <strong>active theme</strong> to the new colour.</p>
+                <p>Obviously you can add more styles to each sheet and change whatever you like. The 
+                    possibilities are endless.</p>
+                <p>As you may have noticed on this page in the top right hand corner I have used 
+                    this process so you can change the style of the Syntax Highlighting. Go ahead 
+                    and change the theme!</p>
+
+            <hr />
+            <p>Yes there are problems with creating stylesheets with colour names, as if you need to change 
+                the colour of something from black to red and the stylesheet is called black it won't make sense but this is just a simple example for teaching purposes.</p>
+
+        </div><!-- Content End -->
+    </div><!-- Main End -->
+
+</body>
+
+</html>
